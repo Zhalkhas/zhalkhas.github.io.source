@@ -1,0 +1,11 @@
+{
+    "name": "zhalkhas_githubio",
+    "short_name": "zhalkhas_githubio",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "zhalkhas.github.io",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false
+}
