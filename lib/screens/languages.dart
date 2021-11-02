@@ -7,40 +7,43 @@ class Languages extends StatelessWidget {
   final languages = [
     {
       'name': 'C',
-      'icon': Icon(FlutterDEVICON.c_line),
+      'icon': const Icon(FlutterDEVICON.c_line),
       'level': 'Proficient',
     },
     {
       'name': 'Python',
-      'icon': Icon(FlutterDEVICON.python_plain),
+      'icon': const Icon(FlutterDEVICON.python_plain),
       'level': 'Proficient',
     },
     {
       'name': 'Golang',
-      'icon': Icon(FlutterDEVICON.go_plain),
+      'icon': const Icon(FlutterDEVICON.go_plain),
       'level': 'Proficient',
     },
     {
       'name': 'Kotlin',
-      'icon': Icon(FlutterDEVICON.kotlin_plain),
+      'icon': const Icon(FlutterDEVICON.kotlin_plain),
       'level': 'Familiar',
     },
     {
       'name': 'Dart (Flutter)',
-      'icon': Icon(FlutterDEVICON.flutter_plain),
+      'icon': const Icon(FlutterDEVICON.flutter_plain),
       'level': 'Proficient',
     },
     {
       'name': 'JavaScript/TypeScript',
-      'icon': Icon(FlutterDEVICON.typescript_plain),
+      'icon': const Icon(FlutterDEVICON.typescript_plain),
       'level': 'Familiar',
     },
     {
       'name': 'Java',
-      'icon': Icon(FlutterDEVICON.java_plain),
+      'icon': const Icon(FlutterDEVICON.java_plain),
       'level': 'Familiar',
     }
   ];
+
+  Languages({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return gridViewBuilder(
@@ -50,9 +53,9 @@ class Languages extends StatelessWidget {
         ...languages
             .map(
               (e) => ListTile(
-                leading: e['icon'],
-                title: Text(e['name']),
-                subtitle: Text(e['level']),
+                leading: e['icon'] as Widget?,
+                title: Text(e['name'] as String),
+                subtitle: Text(e['level'] as String),
               ),
             )
             .toList(),

@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:zhalkhas_githubio/text.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
+import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:zhalkhas_githubio/text.dart';
 
 class Language {
   final String name;
@@ -15,23 +15,25 @@ class Language {
 }
 
 class LanguageStats extends StatelessWidget {
+  const LanguageStats({Key? key}) : super(key: key);
+
   Future<List<PieSeries<Language, int>>> getStats(BuildContext context) async {
-    return http.get('https://api.github.com/users/Zhalkhas/repos').then(
-      (responce) {
-        List repos = jsonDecode(responce.body);
+    return http
+        .get(Uri.parse('https://api.github.com/users/Zhalkhas/repos'))
+        .then(
+      (response) {
+        List repos = jsonDecode(response.body);
         List languages = repos.map((e) => e['language']).toList();
-        Map<String, int> res = Map();
-        languages.forEach((language) {
+        Map<String, int> res = {};
+        for (var language in languages) {
           if (language != null) {
             if (!res.containsKey(language)) {
               res[language] = 1;
             } else {
-              res[language]++;
+              res[language] = res[language]! + 1;
             }
           }
-        });
-        print("languages $languages");
-        print("res $res");
+        }
         List<Language> resList = [];
         res.forEach((key, value) {
           resList.add(Language(key, value));
@@ -42,12 +44,12 @@ class LanguageStats extends StatelessWidget {
         return <PieSeries<Language, int>>[
           PieSeries<Language, int>(
             pointColorMapper: (datum, index) =>
-                Colors.grey[validIndexes[index % validIndexes.length]],
+                Colors.grey[validIndexes[index % validIndexes.length]]!,
             dataSource: resList,
             xValueMapper: (val, indx) => indx,
             yValueMapper: (datum, index) => datum.count,
             dataLabelMapper: (datum, index) => datum.name,
-            dataLabelSettings: DataLabelSettings(isVisible: true),
+            dataLabelSettings: const DataLabelSettings(isVisible: true),
           )
         ];
       },
@@ -55,7 +57,8 @@ class LanguageStats extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) => FutureBuilder(
+  Widget build(BuildContext context) =>
+      FutureBuilder<List<PieSeries<Language, int>>>(
         future: getStats(context),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
@@ -75,11 +78,11 @@ class LanguageStats extends StatelessWidget {
             );
           } else if (snapshot.hasError) {
             print("ERROR ${snapshot.error}");
-            return Center(
+            return const Center(
               child: Text("Error occured during data fetch"),
             );
           } else {
-            return SpinKitRipple(
+            return const SpinKitRipple(
               color: Colors.white,
             );
           }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-TextStyle heading = TextStyle(
+TextStyle heading = const TextStyle(
   fontSize: 30,
   fontWeight: FontWeight.bold,
   shadows: <Shadow>[

@@ -7,50 +7,53 @@ class Frameworks extends StatelessWidget {
   final techologies = [
     {
       'name': 'Docker',
-      'icon': Icon(FlutterDEVICON.docker_plain),
+      'icon': const Icon(FlutterDEVICON.docker_plain),
       'level': 'Familiar',
     },
     {
       'name': 'SQL',
-      'icon': Icon(FlutterDEVICON.postgresql_plain),
+      'icon': const Icon(FlutterDEVICON.postgresql_plain),
       'level': 'Familiar',
     },
     {
       'name': 'Arduino',
-      'icon': Icon(FlutterDEVICON.c_line),
+      'icon': const Icon(FlutterDEVICON.c_line),
       'level': 'Familiar',
     },
     {
       'name': 'STM32 HAL',
-      'icon': Icon(FlutterDEVICON.c_line),
+      'icon': const Icon(FlutterDEVICON.c_line),
       'level': 'Familiar',
     },
     {
       'name': 'NodeJS',
-      'icon': Icon(FlutterDEVICON.nodejs_plain),
+      'icon': const Icon(FlutterDEVICON.nodejs_plain),
       'level': 'Familiar',
     },
     {
       'name': 'Software Defined Radio',
-      'icon': Icon(Octicons.radio_tower),
+      'icon': const Icon(Octicons.radio_tower),
       'level': 'Familiar',
     },
     {
       'name': 'Django',
-      'icon': Icon(FlutterDEVICON.django_plain),
+      'icon': const Icon(FlutterDEVICON.django_plain),
       'level': 'Familiar',
     },
     {
       'name': 'POSIX',
-      'icon': Icon(FlutterDEVICON.c_line),
+      'icon': const Icon(FlutterDEVICON.c_line),
       'level': 'Familiar',
     },
     {
       'name': 'Linux',
-      'icon': Icon(FlutterDEVICON.linux_plain),
+      'icon': const Icon(FlutterDEVICON.linux_plain),
       'level': 'Proficient',
     }
   ];
+
+  Frameworks({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return gridViewBuilder(
@@ -60,9 +63,9 @@ class Frameworks extends StatelessWidget {
         ...techologies
             .map(
               (e) => ListTile(
-                leading: e['icon'],
-                title: Text(e['name']),
-                subtitle: Text(e['level']),
+                leading: e['icon'] as Widget?,
+                title: Text(e['name'] as String),
+                subtitle: Text(e['level'] as String),
               ),
             )
             .toList()

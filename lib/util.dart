@@ -6,7 +6,7 @@ import 'dart:js' show context;
 Function redirect(url) => () => context.callMethod('open', [url]);
 
 Widget gridViewBuilder(
-    {@required String header,
+    {required String header,
     double childAspectRatio = 4,
     List<Widget> children = const [],
     int crossAxisCount = 2}) {
@@ -17,7 +17,7 @@ Widget gridViewBuilder(
       textAlign: TextAlign.start,
     ),
     content: Padding(
-      padding: EdgeInsets.only(top: 40),
+      padding: const EdgeInsets.only(top: 40),
       child: Scrollbar(
         child: GridView.count(
             childAspectRatio: childAspectRatio,

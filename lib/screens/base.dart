@@ -1,33 +1,35 @@
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:zhalkhas_githubio/screens/courses.dart';
 import 'package:zhalkhas_githubio/screens/education.dart';
 import 'package:zhalkhas_githubio/screens/footer.dart';
 import 'package:zhalkhas_githubio/screens/frameworks.dart';
-import 'package:zhalkhas_githubio/screens/languageStats.dart';
+import 'package:zhalkhas_githubio/screens/language_stats.dart';
 import 'package:zhalkhas_githubio/screens/languages.dart';
 import 'package:zhalkhas_githubio/screens/profile.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:zhalkhas_githubio/screens/projects.dart';
 
 class Base extends StatefulWidget {
+  const Base({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => _BaseState();
 }
 
 class _BaseState extends State<Base> {
-  List<Widget> _widgets = [
-    Profile(),
-    Education(),
+  final List<Widget> _widgets = [
+    const Profile(),
+    const Education(),
     Languages(),
     Frameworks(),
-    LanguageStats(),
+    const LanguageStats(),
     Projects(),
     Courses(),
-    Footer(),
+    const Footer(),
   ];
-  SwiperController _swiperController = SwiperController();
-  List<String> _imageNames = [
+  final SwiperController _swiperController = SwiperController();
+  final List<String> _imageNames = [
     "assets/main.jpg",
     "assets/carousel1.jpg",
     "assets/carousel2.jpg",
@@ -37,7 +39,8 @@ class _BaseState extends State<Base> {
     "assets/carousel6.jpg",
     "assets/carousel7.jpg",
   ];
-  List<Image> _images;
+  late List<Image> _images;
+
   @override
   void initState() {
     super.initState();
@@ -56,10 +59,10 @@ class _BaseState extends State<Base> {
                   Expanded(
                     child: Container(
                       child: Swiper(
-                        control: SwiperControl(color: Colors.white),
+                        control: const SwiperControl(color: Colors.white),
                         itemCount: _images.length,
                         itemBuilder: (context, index) => _images[index],
-                        pagination: SwiperPagination(),
+                        pagination: const SwiperPagination(),
                       ),
                       color: Colors.white,
                     ),
@@ -76,14 +79,14 @@ class _BaseState extends State<Base> {
                             itemCount: _widgets.length,
                             itemBuilder: (context, index) => Padding(
                               child: _widgets[index],
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   vertical: 40, horizontal: 40),
                             ),
-                            control: SwiperControl(
+                            control: const SwiperControl(
                               disableColor: Colors.transparent,
                               color: Colors.grey,
                             ),
-                            pagination: SwiperPagination(
+                            pagination: const SwiperPagination(
                                 builder: SwiperPagination.dots,
                                 alignment: Alignment.centerRight),
                           ),
@@ -105,13 +108,13 @@ class _BaseState extends State<Base> {
                       itemBuilder: (context, index) => Padding(
                         child: _widgets[index],
                         padding:
-                            EdgeInsets.symmetric(vertical: 40, horizontal: 40),
+                            const EdgeInsets.symmetric(vertical: 40, horizontal: 40),
                       ),
-                      control: SwiperControl(
+                      control: const SwiperControl(
                         disableColor: Colors.transparent,
                         color: Colors.grey,
                       ),
-                      pagination: SwiperPagination(
+                      pagination: const SwiperPagination(
                           builder: SwiperPagination.dots,
                           alignment: Alignment.centerRight),
                     ),

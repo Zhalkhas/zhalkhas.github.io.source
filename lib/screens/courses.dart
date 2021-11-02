@@ -6,44 +6,51 @@ class Courses extends StatelessWidget {
   final courses = [
     {
       'name': 'Performance and Data Structures',
-      'icon': Icon(FlutterDEVICON.java_plain),
+      'icon': const Icon(FlutterDEVICON.java_plain),
     },
     {
       'name': 'Computer Systems and Organization',
-      'icon': Icon(Icons.computer),
+      'icon': const Icon(Icons.computer),
     },
     {
       'name': 'Algorithms',
-      'icon': Icon(Icons.computer),
+      'icon': const Icon(Icons.computer),
     },
     {
       'name': 'Software Engineering',
-      'icon': Icon(FlutterDEVICON.java_plain),
+      'icon': const Icon(FlutterDEVICON.java_plain),
       'link': 'https://github.com/Zhalkhas/railway_management'
     },
     {
       'name': 'Database Systems',
-      'icon': Icon(FlutterDEVICON.mysql_plain),
+      'icon': const Icon(FlutterDEVICON.mysql_plain),
     },
     {
       'name': 'Computer Networks',
       'link': 'https://github.com/Zhalkhas/FileTracker',
-      'icon': Icon(FlutterDEVICON.python_plain),
+      'icon': const Icon(FlutterDEVICON.python_plain),
     },
     {
-      'name': 'Operaing Systems',
+      'name': 'Operating Systems',
       'link': 'https://github.com/Zhalkhas/OS_CSCI332',
-      'icon': Icon(FlutterDEVICON.c_line),
+      'icon': const Icon(FlutterDEVICON.c_line),
     },
     {
       'name': 'Compiler Construction',
       'link': 'https://github.com/Zhalkhas/CSCI355_Compiler_Construction',
-      'icon': Icon(FlutterDEVICON.java_plain),
-    }
+      'icon': const Icon(FlutterDEVICON.java_plain),
+    },
+    {
+      'name': 'GPU programming',
+      'icon': const Icon(FlutterDEVICON.c_line),
+    },
   ];
+
+  Courses({Key? key}) : super(key: key);
+
   @override
-  Widget build(BuildContext buildContext) {
-    double width = MediaQuery.of(buildContext).size.width;
+  Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return gridViewBuilder(
       header: "Relevant Courses",
       childAspectRatio: 5,
@@ -52,19 +59,16 @@ class Courses extends StatelessWidget {
         ...courses
             .map(
               (e) => ListTile(
-                leading: e['icon'],
-                title: Text(e['name']),
+                leading: e['icon'] as Widget?,
+                title: Text(e['name'] as String),
                 trailing: e.containsKey('link')
                     ? IconButton(
-                        icon: Icon(Icons.link),
+                        icon: const Icon(Icons.link),
                         onPressed: redirect(
                           e['link'],
-                        ),
+                        ) as void Function()?,
                       )
-                    : SizedBox(
-                        width: 0,
-                        height: 0,
-                      ),
+                    : const SizedBox.shrink(),
               ),
             )
             .toList()
