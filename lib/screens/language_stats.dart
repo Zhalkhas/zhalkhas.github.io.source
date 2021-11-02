@@ -46,7 +46,7 @@ class LanguageStats extends StatelessWidget {
             pointColorMapper: (datum, index) =>
                 Colors.grey[validIndexes[index % validIndexes.length]]!,
             dataSource: resList,
-            xValueMapper: (val, indx) => indx,
+            xValueMapper: (val, index) => index,
             yValueMapper: (datum, index) => datum.count,
             dataLabelMapper: (datum, index) => datum.name,
             dataLabelSettings: const DataLabelSettings(isVisible: true),
@@ -70,7 +70,6 @@ class LanguageStats extends StatelessWidget {
                 ),
                 Expanded(
                   child: SfCircularChart(
-                    // title: ChartTitle(text: 'Language stats', textStyle: heading),
                     series: snapshot.data,
                   ),
                 ),
@@ -79,7 +78,7 @@ class LanguageStats extends StatelessWidget {
           } else if (snapshot.hasError) {
             print("ERROR ${snapshot.error}");
             return const Center(
-              child: Text("Error occured during data fetch"),
+              child: Text("Error occurred during data fetch"),
             );
           } else {
             return const SpinKitRipple(
