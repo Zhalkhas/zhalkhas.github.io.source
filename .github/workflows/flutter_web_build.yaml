@@ -25,4 +25,4 @@ jobs:
           git remote add origin https://${{secrets.commit_secret}}@github.com/Zhalkhas/zhalkas.github.io.git
           git add --all
           git commit -m "${{ github.event.head_commit.message }}"
-          git push origin main -f
+          git push origin master -f
