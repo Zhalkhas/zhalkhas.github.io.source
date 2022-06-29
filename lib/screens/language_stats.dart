@@ -1,7 +1,7 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -76,7 +76,7 @@ class LanguageStats extends StatelessWidget {
               ],
             );
           } else if (snapshot.hasError) {
-            print("ERROR ${snapshot.error}");
+            log("ERROR ${snapshot.error}");
             return const Center(
               child: Text("Error occurred during data fetch"),
             );

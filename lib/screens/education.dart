@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:zhalkhas_githubio/text.dart';
 
 class Education extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
+import 'package:zhalkhas_githubio/gen/assets.gen.dart';
 import 'package:zhalkhas_githubio/text.dart';
 import 'package:zhalkhas_githubio/util.dart';
 
@@ -18,7 +18,7 @@ class Profile extends StatelessWidget {
           elevation: 15,
           child: CircleAvatar(
             radius: 95,
-            child: Image.asset('assets/round_avatar.png'),
+            child: Assets.roundAvatar.image(),
           ),
         ),
         Text(

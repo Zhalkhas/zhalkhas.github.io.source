@@ -1,6 +1,6 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:zhalkhas_githubio/gen/assets.gen.dart';
 import 'package:zhalkhas_githubio/screens/courses.dart';
 import 'package:zhalkhas_githubio/screens/education.dart';
 import 'package:zhalkhas_githubio/screens/footer.dart';
@@ -29,23 +29,17 @@ class _BaseState extends State<Base> {
     const Footer(),
   ];
   final SwiperController _swiperController = SwiperController();
-  final List<String> _imageNames = [
-    "assets/main.jpg",
-    "assets/carousel1.jpg",
-    "assets/carousel2.jpg",
-    "assets/carousel3.jpg",
-    "assets/carousel4.jpg",
-    "assets/carousel5.jpg",
-    "assets/carousel6.jpg",
-    "assets/carousel7.jpg",
-  ];
-  late List<Image> _images;
 
-  @override
-  void initState() {
-    super.initState();
-    _images = [..._imageNames.map((e) => Image.asset(e)).toList()];
-  }
+  final List<Image> _images = [
+    Assets.main.image(),
+    Assets.carousel1.image(),
+    Assets.carousel2.image(),
+    Assets.carousel3.image(),
+    Assets.carousel4.image(),
+    Assets.carousel5.image(),
+    Assets.carousel6.image(),
+    Assets.carousel7.image(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -107,8 +101,8 @@ class _BaseState extends State<Base> {
                       itemCount: _widgets.length,
                       itemBuilder: (context, index) => Padding(
                         child: _widgets[index],
-                        padding:
-                            const EdgeInsets.symmetric(vertical: 40, horizontal: 40),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 40, horizontal: 40),
                       ),
                       control: const SwiperControl(
                         disableColor: Colors.transparent,
