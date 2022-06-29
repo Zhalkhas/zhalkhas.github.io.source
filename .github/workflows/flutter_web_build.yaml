@@ -22,7 +22,7 @@ jobs:
           # git config --global user.name your_name
           git config --global user.name ${{ github.actor }}
           git status
-          git remote add origin https://${{secrets.commit_secret}}@github.com/Zhalkhas/zhalkas.github.io.git
+          git remote add origin https://${{secrets.commit_secret}}@github.com/Zhalkhas/zhalkhas.github.io.git
           git add --all
           git commit -m "${{ github.event.head_commit.message }}"
           git push origin master -f
